@@ -16,7 +16,7 @@ module.exports.record = (req, res, next)=> {
   });
 };
 
-module.exports.getVideoPulses = (req, res, next)=> {
+module.exports.getByVideo = (req, res, next)=> {
   let query = {'video_id': req.params.video_id};
   Beat.find(query, (err, data)=> {
     if (err) {
@@ -29,7 +29,7 @@ module.exports.getVideoPulses = (req, res, next)=> {
   });
 };
 
-module.exports.getVideoPulse = (req, res, next) => {
+module.exports.getUserPulse = (req, res, next) => {
   let query = {
     'user_id': req.params.user_id,
     'video_id': req.params.video_id
