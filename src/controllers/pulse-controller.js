@@ -2,13 +2,13 @@
 
 let Beat = require('../models/beat');
 
-module.exports.record = function (req, res, next) {
+module.exports.record = (req, res, next)=> {
   let beat = req.body;
   let query = {
     'user_id': beat.user_id,
     'video_id': beat.video_id
   };
-  Beat.update(query, beat, {upsert: true}, function (err, data) {
+  Beat.update(query, beat, {upsert: true}, (err, data)=> {
     if (err) {
       return res.status(400).send(err);
     }
@@ -16,20 +16,53 @@ module.exports.record = function (req, res, next) {
   });
 };
 
-module.exports.get = function (req, res, next) {
-  let query = {
-    'user_id': req.params.user_id,
-    'video_id': req.params.video_id
-  };
-  Beat.findOne(query, function (err, data) {
+module.exports.getVideoPulses = (req, res, next)=> {
+  let query = {'video_id': req.params.video_id};
+  Beat.find(query, (err, data)=> {
     if (err) {
       return next(err);
     }
     if (!data) {
       return res.status(404).send();
     }
-    let beat = data.toObject();
-    delete beat._id;
-    return res.json(beat);
+    res.json(parseBeats(data));
   });
 };
+
+module.exports.getVideoPulse = (req, res, next) => {
+  let query = {
+    'user_id': req.params.user_id,
+    'video_id': req.params.video_id
+  };
+  Beat.findOne(query, (err, data)=> {
+    if (err) {
+      return next(err);
+    }
+    if (!data) {
+      return res.status(404).send();
+    }
+    return res.json({timestamp: data.timestamp});
+  });
+};
+
+module.exports.getAllPulses = (req, res, next) => {
+  Beat.find({}, (err, data) => {
+    if (err) {
+      return next(err);
+    }
+    if (!data) {
+      return res.status(404).send();
+    }
+    res.json(parseBeats(data));
+  });
+};
+
+function parseBeats(data) {
+  let beats = [];
+  data.forEach(item=> {
+    let beat = item.toObject();
+    delete beat._id;
+    beats.push(beat);
+  });
+  return beats;
+}
