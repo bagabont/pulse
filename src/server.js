@@ -6,7 +6,7 @@ let http = require('http');
 
 let server = http.createServer(app);
 let env = process.env.NODE_ENV;
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3005;
 let connectionString = process.env.DB_CONNECTION_STRING || 'mongodb://localhost:27017/heartbeat';
 
 server.listen(port, () => {
