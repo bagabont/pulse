@@ -11,8 +11,8 @@ Content-Type: application/json
 ```
 ```json
 {
-    user_id: "123",
-    pointer: 1000
+    "user_id": "123",
+    "pointer": 1000
 }
 ```
 **Response**
@@ -33,14 +33,14 @@ Status: 200 OK
 ```json
 [
     {
-        resource_id: "56ac9e9b7963a8f4257a8867",
-        user_id: "56672ad23d17634817f1e945",
-        pointer: 78569.035
+        "resource_id": "56ac9e9b7963a8f4257a8867",
+        "user_id": "56672ad23d17634817f1e945",
+        "pointer": 78569.035
     },
     {
-        resource_id: "56e0aa1445191a28132f98fe",
-        user_id: "56672ad23d17634817f1e945",
-        pointer: 1000.3219999999999
+        "resource_id": "56e0aa1445191a28132f98fe",
+        "user_id": "56672ad23d17634817f1e945",
+        "pointer": 1000.3219999999999
     }
 ]
 ```
@@ -57,9 +57,9 @@ Status: 200 OK
 ```json
 [
     {
-        resource_id: "56ac9e9b7963a8f4257a8867",
-        user_id: "123",
-        pointer: 100
+        "resource_id": "56ac9e9b7963a8f4257a8867",
+        "user_id": "123",
+        "pointer": 100
     }
 ]
 ```
@@ -75,12 +75,12 @@ Status: 200 OK
 ```json
 [
     {
-        user_id: "123",
-        pointer: 100
+        "user_id": "123",
+        "pointer": 100
     },
     {
-        user_id: "56672ad23d17634817f1e945",
-        pointer: 78569.035
+        "user_id": "56672ad23d17634817f1e945",
+        "pointer": 78569.035
     }
 ]
 ```
@@ -96,6 +96,6 @@ Status: 200 OK
 ```
 ```json
 {
-    pointer: 78569.035
+    "pointer": 78569.035
 }
 ```
