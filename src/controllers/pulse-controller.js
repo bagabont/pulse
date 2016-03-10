@@ -2,13 +2,11 @@
 
 let Beat = require('../models/beat');
 
-module.exports.record = (req, res, next)=> {
-  let beat = req.body;
-  let query = {
-    'user_id': beat.user_id,
-    'video_id': beat.video_id
-  };
-  Beat.update(query, beat, {upsert: true}, (err, data)=> {
+module.exports.add = (req, res, next)=> {
+  let data = req.body;
+  data.resource_id = req.params.rid;
+  let query = {'user_id': data.user_id, 'resource_id': data.resource_id};
+  Beat.update(query, data, {upsert: true}, (err, doc)=> {
     if (err) {
       return res.status(400).send(err);
     }
@@ -16,8 +14,8 @@ module.exports.record = (req, res, next)=> {
   });
 };
 
-module.exports.getByVideo = (req, res, next)=> {
-  let query = {'video_id': req.params.video_id};
+module.exports.getById = (req, res, next)=> {
+  let query = {'resource_id': req.params.rid};
   Beat.find(query, (err, data)=> {
     if (err) {
       return next(err);
@@ -29,17 +27,17 @@ module.exports.getByVideo = (req, res, next)=> {
     data.forEach(item=> {
       let beat = item.toObject();
       delete beat._id;
-      delete beat.video_id;
+      delete beat.resource_id;
       beats.push(beat);
     });
     res.json(beats);
   });
 };
 
-module.exports.getUserPulse = (req, res, next) => {
+module.exports.getByUser = (req, res, next) => {
   let query = {
-    'user_id': req.params.user_id,
-    'video_id': req.params.video_id
+    'user_id': req.params.uid,
+    'resource_id': req.params.rid
   };
   Beat.findOne(query, (err, data)=> {
     if (err) {
@@ -48,11 +46,11 @@ module.exports.getUserPulse = (req, res, next) => {
     if (!data) {
       return res.status(404).send();
     }
-    return res.json({timestamp: data.timestamp});
+    return res.json({pointer: data.pointer});
   });
 };
 
-module.exports.getAllPulses = (req, res, next) => {
+module.exports.getAllBeats = (req, res, next) => {
   Beat.find({}, (err, data) => {
     if (err) {
       return next(err);
