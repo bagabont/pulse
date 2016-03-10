@@ -67,3 +67,21 @@ module.exports.getAllBeats = (req, res, next) => {
     res.json(beats);
   });
 };
+module.exports.findBeats = (req, res, next) => {
+  let query = {user_id: req.query.uid};
+  Beat.find(query, (err, data) => {
+    if (err) {
+      return next(err);
+    }
+    if (!data) {
+      return res.status(404).send();
+    }
+    let beats = [];
+    data.forEach(item=> {
+      let beat = item.toObject();
+      delete beat._id;
+      beats.push(beat);
+    });
+    res.json(beats);
+  });
+};

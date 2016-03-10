@@ -7,6 +7,8 @@ module.exports = () => {
 
   router.get('/beats', pulseController.getAllBeats);
 
+  router.get('/beats?', pulseController.findBeats);
+
   router.get('/beats/:rid', pulseController.getById);
 
   router.post('/beats/:rid', pulseController.add);
