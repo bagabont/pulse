@@ -5,9 +5,7 @@ let router = require('express').Router();
 
 module.exports = () => {
 
-  router.get('/beats', pulseController.getAllBeats);
-
-  router.get('/beats?', pulseController.findBeats);
+  router.get('/beats', pulseController.findBeats);
 
   router.get('/beats/:rid', pulseController.getById);
 
