@@ -1,5 +1,5 @@
 # pulse
-A heartbeat service for video playback
+A heartbeat service for storing resource pointers
 
 ### API
 
