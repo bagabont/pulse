@@ -37,7 +37,7 @@ module.exports.getById = (req, res, next)=> {
 module.exports.getByKey = (req, res, next) => {
   let query = {
     'key': req.params.key,
-    'resource_id': req.params.key
+    'resource_id': req.params.rid
   };
   Beat.findOne(query, (err, data)=> {
     if (err) {
