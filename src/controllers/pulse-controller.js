@@ -5,7 +5,7 @@ let Beat = require('../models/beat');
 module.exports.add = (req, res, next)=> {
   let data = req.body;
   data.resource_id = req.params.rid;
-  let query = {'user_id': data.user_id, 'resource_id': data.resource_id};
+  let query = {'key': data.key, 'resource_id': data.resource_id};
   Beat.update(query, data, {upsert: true}, (err, doc)=> {
     if (err) {
       return res.status(400).send(err);
@@ -34,10 +34,10 @@ module.exports.getById = (req, res, next)=> {
   });
 };
 
-module.exports.getByUser = (req, res, next) => {
+module.exports.getByKey = (req, res, next) => {
   let query = {
-    'user_id': req.params.uid,
-    'resource_id': req.params.rid
+    'key': req.params.key,
+    'resource_id': req.params.key
   };
   Beat.findOne(query, (err, data)=> {
     if (err) {
@@ -53,8 +53,8 @@ module.exports.getByUser = (req, res, next) => {
 
 module.exports.findBeats = (req, res, next) => {
   var query = {};
-  if (req.query.uid) {
-    query.user_id = req.query.uid;
+  if (req.query.key) {
+    query.key = req.query.key;
   }
   Beat.find(query, (err, data) => {
     if (err) {

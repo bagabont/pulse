@@ -11,7 +11,7 @@ Content-Type: application/json
 ```
 ```json
 {
-    "user_id": "123",
+    "key": "123",
     "pointer": 1000
 }
 ```
@@ -34,12 +34,12 @@ Status: 200 OK
 [
     {
         "resource_id": "56ac9e9b7963a8f4257a8867",
-        "user_id": "56672ad23d17634817f1e945",
+        "key": "56672ad23d17634817f1e945",
         "pointer": 78569.035
     },
     {
         "resource_id": "56e0aa1445191a28132f98fe",
-        "user_id": "56672ad23d17634817f1e945",
+        "key": "56672ad23d17634817f1e945",
         "pointer": 1000.3219999999999
     }
 ]
@@ -48,7 +48,7 @@ Status: 200 OK
 #### Find resources by used ID
 **Request**
 ```httph
-GET /beats?uid=<user_id>
+GET /beats?key=<key>
 ```
 **Response**
 ```httph
@@ -58,7 +58,7 @@ Status: 200 OK
 [
     {
         "resource_id": "56ac9e9b7963a8f4257a8867",
-        "user_id": "123",
+        "key": "123",
         "pointer": 100
     }
 ]
@@ -75,20 +75,20 @@ Status: 200 OK
 ```json
 [
     {
-        "user_id": "123",
+        "key": "123",
         "pointer": 100
     },
     {
-        "user_id": "56672ad23d17634817f1e945",
+        "key": "56672ad23d17634817f1e945",
         "pointer": 78569.035
     }
 ]
 ```
 
-#### Get resource by user ID
+#### Get resource by key
 **Request**
 ```httph
-GET /beats/:resource_id/:user_id
+GET /beats/:resource_id/:key
 ```
 **Response**
 ```httph
