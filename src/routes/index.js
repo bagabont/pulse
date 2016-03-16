@@ -11,7 +11,7 @@ module.exports = () => {
 
   router.post('/beats/:rid', pulseController.add);
 
-  router.get('/beats/:rid/:key', pulseController.getByKey());
+  router.get('/beats/:rid/:key', pulseController.getByKey);
 
   return router;
 };
