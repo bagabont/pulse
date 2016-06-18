@@ -27,7 +27,7 @@ Status: 204 No Content
 ```httph
 GET /beats
 ```
-***Optional filters*
+*Optional filters*
 ```httph
 key
 user
