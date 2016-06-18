@@ -1,13 +1,14 @@
 {
-  "name": "src",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "body-parser": "~1.13.2",
-    "express": "~4.13.1",
-    "mongoose": "^4.4.6"
-  }
+    "name": "src",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon ./server.js"
+    },
+    "dependencies": {
+        "body-parser": "~1.13.2",
+        "express": "~4.13.1",
+        "mongoose": "^4.4.6",
+        "winston": "^2.2.0"
+    }
 }

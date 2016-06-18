@@ -1,10 +1,15 @@
 'use strict';
 
 let mongoose = require('mongoose');
+let log = require('./log');
+let config = require('./config');
 
-exports.connect = (dbSource) => {
-  mongoose.connect(dbSource);
-  return mongoose.connection
-    .on('error', err => console.log('Database failed to connect to: %s. Error: %s', dbSource, err))
-    .once('open', () => console.log('Database connected to %s', dbSource));
+exports.connect = () => {
+
+    let dbSource = config.connectionString;
+    mongoose.connect(dbSource);
+
+    return mongoose.connection
+        .on('error', err => log.error('Database failed to connect to: %s. Error: %s', dbSource, err))
+        .once('open', () => log.info('Database connected to %s', dbSource));
 };
