@@ -3,7 +3,7 @@ A heartbeat service for storing resource pointers
 
 ### API
 
-#### Add or Update resource
+#### *Add* or *Update* a Beat
 **Request**
 ```httph
 POST /beats
@@ -21,7 +21,7 @@ Content-Type: application/json
 Status: 204 No Content
 ```
 
-#### Get all resources
+#### Get Beats
 
 **Request**
 ```httph
