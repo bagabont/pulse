@@ -25,7 +25,7 @@ Status: 204 No Content
 
 **Request**
 ```httph
-GET /beats
+GET /beats?key=<key>&user=<user>
 ```
 *Optional filters*
 ```httph
