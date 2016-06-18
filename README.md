@@ -1,5 +1,5 @@
-# pulse
-A heartbeat service for storing resource pointers
+# Key Value based Heartbeat Service - Pulse
+Pulse is a key-value based service that enables pulse-like behavior. The service is very comfortable for storing video or any document based state per user, so it can be resumed after session has terminated.
 
 ### API
 
