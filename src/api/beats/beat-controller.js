@@ -3,12 +3,12 @@
 var log = require('../../config/log');
 var Beat = require('./beat');
 
-module.exports.add = (req, res, next) => {
+module.exports.add = function(req, res, next) {
 
     var content = req.body;
     var query = { 'user': content.user, 'key': content.key };
 
-    Beat.update(query, content, { upsert: true, new: true }, (err, data) => {
+    Beat.update(query, content, { upsert: true, new: true }, function(err, data) {
         if (err) {
             return res.status(400).send(err);
         }
@@ -20,7 +20,7 @@ module.exports.add = (req, res, next) => {
     });
 };
 
-module.exports.getAll = (req, res, next) => {
+module.exports.getAll = function(req, res, next) {
 
     var query = {};
 
@@ -31,7 +31,7 @@ module.exports.getAll = (req, res, next) => {
         query.key = req.query.key;
     }
 
-    Beat.find(query, (err, data) => {
+    Beat.find(query, function(err, data) {
         if (err) {
             return next(err);
         }

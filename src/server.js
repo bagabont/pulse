@@ -8,7 +8,7 @@ var log = require('./config/log');
 
 var server = http.createServer(api);
 
-server.listen(config.port, () => {
+server.listen(config.port, function() {
     log.info('[%s] Heartbeat API Server listening on port %s...', config.environment, config.port);
     db.connect();
 });

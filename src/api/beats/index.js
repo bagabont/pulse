@@ -6,4 +6,6 @@ var router = require('express').Router();
 router.post('/beats', pulseController.add);
 router.get('/beats', pulseController.getAll);
 
-module.exports = () => router;
+module.exports = function() {
+    return  router
+};
