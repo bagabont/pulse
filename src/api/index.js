@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let allowCrossDomainMiddleware = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
     return next();
 };
