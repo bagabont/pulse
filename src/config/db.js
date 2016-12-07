@@ -1,12 +1,12 @@
 'use strict';
 
-let mongoose = require('mongoose');
-let log = require('./log');
-let config = require('./config');
+var mongoose = require('mongoose');
+var log = require('./log');
+var config = require('./config');
 
 exports.connect = () => {
 
-    let dbSource = config.connectionString;
+    var dbSource = config.connectionString;
     mongoose.connect(dbSource);
 
     return mongoose.connection

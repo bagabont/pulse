@@ -1,10 +1,10 @@
 'use strict';
 
-let handleErrors = (app) => {
+var handleErrors = (app) => {
 
     // catch 404 and forward to error handler
     app.use((req, res, next) => {
-        let error = new Error(req.url);
+        var error = new Error(req.url);
         error.status = 404;
         return next(error);
     });

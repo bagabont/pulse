@@ -1,12 +1,12 @@
 'use strict';
 
-let log = require('../../config/log');
-let Beat = require('./beat');
+var log = require('../../config/log');
+var Beat = require('./beat');
 
 module.exports.add = (req, res, next) => {
 
-    let content = req.body;
-    let query = { 'user': content.user, 'key': content.key };
+    var content = req.body;
+    var query = { 'user': content.user, 'key': content.key };
 
     Beat.update(query, content, { upsert: true, new: true }, (err, data) => {
         if (err) {

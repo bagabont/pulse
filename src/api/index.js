@@ -1,10 +1,10 @@
 'use strict';
 
-let express = require('express');
-let bodyParser = require('body-parser');
-let errorHandler = require('../config/error-handler');
-let config = require('../config/config');
-let app = express();
+var express = require('express');
+var bodyParser = require('body-parser');
+var errorHandler = require('../config/error-handler');
+var config = require('../config/config');
+var app = express();
 
 app.disable('x-powered-by');
 app.set('port', config.port);
@@ -12,7 +12,7 @@ app.set('port', config.port);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let allowCrossDomainMiddleware = (req, res, next) => {
+var allowCrossDomainMiddleware = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');

@@ -1,5 +1,5 @@
 'use strict';
 
-let winston = require('winston');
+var winston = require('winston');
 
 module.exports = winston;
